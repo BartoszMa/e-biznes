@@ -1,0 +1,21 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'main.HelloWorld'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'main.HelloWorld'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.xerial:sqlite-jdbc:3.49.1.0'
+}
