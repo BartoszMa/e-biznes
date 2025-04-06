@@ -2,6 +2,8 @@ package main
 
 import (
 	"github.com/labstack/echo/v4"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 	"lab4/controllers"
 	"lab4/models"
 	"lab4/routes"
@@ -11,7 +13,14 @@ import (
 func main() {
 	e := echo.New()
 
-	productService := &service.Service{DbArray: []models.Product{}}
+	db, err := gorm.Open(sqlite.Open("products.db"), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
+	
+	db.AutoMigrate(&models.Product{})
+
+	productService := &service.Service{DB: db}
 
 	productController := &controllers.ProductController{DbService: productService}
 

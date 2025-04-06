@@ -2,47 +2,45 @@ package service
 
 import (
 	"fmt"
+	"gorm.io/gorm"
 	"lab4/models"
 )
 
 type Service struct {
-	DbArray []models.Product
+	DB *gorm.DB
 }
 
-func (s *Service) GetAllProducts() []models.Product {
-	return s.DbArray
+func (s *Service) GetAllProducts() ([]models.Product, error) {
+	var products []models.Product
+	result := s.DB.Find(&products)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	return products, nil
 }
 
 func (s *Service) GetOneProduct(id uint) (models.Product, error) {
-	for _, product := range s.DbArray {
-		if product.Id == id {
-			return product, nil
-		}
+	var product models.Product
+	result := s.DB.First(&product, id)
+	if result.Error != nil {
+		return models.Product{}, result.Error
 	}
-	return models.Product{}, fmt.Errorf("product not found")
+	return product, nil
 }
 
-func (s *Service) AddProduct(product models.Product) {
-	s.DbArray = append(s.DbArray, product)
+func (s *Service) AddProduct(product models.Product) error {
+	return s.DB.Create(&product).Error
 }
 
 func (s *Service) RemoveProduct(id uint) error {
-	for index, product := range s.DbArray {
-		if product.Id == id {
-			s.DbArray[index] = s.DbArray[len(s.DbArray)-1]
-			s.DbArray = s.DbArray[:len(s.DbArray)-1]
-			return nil
-		}
+	result := s.DB.Delete(&models.Product{}, id)
+	if result.RowsAffected == 0 {
+		return fmt.Errorf("product not found")
 	}
-	return fmt.Errorf("product not found")
+	return result.Error
 }
 
 func (s *Service) EditProduct(editedProduct models.Product) error {
-	for index, product := range s.DbArray {
-		if product.Id == editedProduct.Id {
-			s.DbArray[index] = editedProduct
-			return nil
-		}
-	}
-	return fmt.Errorf("product not found")
+	result := s.DB.Save(&editedProduct)
+	return result.Error
 }

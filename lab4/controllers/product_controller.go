@@ -14,7 +14,11 @@ type ProductController struct {
 }
 
 func (pc *ProductController) GetAllProducts(c echo.Context) error {
-	return c.JSON(http.StatusOK, pc.DbService.GetAllProducts())
+	products, err := pc.DbService.GetAllProducts()
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, err)
+	}
+	return c.JSON(http.StatusOK, products)
 }
 
 func (pc *ProductController) GetOneProduct(c echo.Context) error {
@@ -37,7 +41,10 @@ func (pc *ProductController) AddProduct(c echo.Context) error {
 		return c.JSON(http.StatusBadRequest, map[string]string{"error": "Invalid request body"})
 	}
 
-	pc.DbService.AddProduct(product)
+	err := pc.DbService.AddProduct(product)
+	if err != nil {
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
+	}
 	return c.JSON(http.StatusCreated, map[string]string{"message": "Product added successfully"})
 }
 
