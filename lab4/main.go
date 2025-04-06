@@ -17,14 +17,17 @@ func main() {
 	if err != nil {
 		panic("failed to connect database")
 	}
-	
-	db.AutoMigrate(&models.Product{})
+
+	db.AutoMigrate(&models.Product{}, &models.Cart{}, &models.CartItem{})
 
 	productService := &service.Service{DB: db}
+	cartService := &service.CartService{DB: db}
 
 	productController := &controllers.ProductController{DbService: productService}
+	cartController := &controllers.CartController{CartService: cartService}
 
 	routes.ProductRouter(productController, e)
+	routes.CartRouter(cartController, e)
 
 	e.Logger.Fatal(e.Start(":4000"))
 }
