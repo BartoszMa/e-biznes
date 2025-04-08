@@ -4,7 +4,8 @@ import "gorm.io/gorm"
 
 type Product struct {
 	gorm.Model
-	Name     string  `json:"name"`
-	Price    float32 `json:"price"`
-	Category string  `json:"category"`
+	Name       string   `json:"name"`
+	Price      float32  `json:"price"`
+	CategoryID uint     `json:"category_id"`
+	Category   Category `json:"category" gorm:"foreignKey:CategoryID"`
 }
