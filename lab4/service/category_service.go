@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gorm.io/gorm"
 	"lab4/models"
+	"lab4/scopes"
 )
 
 type CategoryService struct {
@@ -16,7 +17,7 @@ func (cs *CategoryService) CreateCategory(category models.Category) error {
 
 func (cs *CategoryService) GetAllCategories() ([]models.Category, error) {
 	var categories []models.Category
-	err := cs.DB.Preload("Products").Find(&categories).Error
+	err := cs.DB.Scopes(scopes.WithProducts()).Find(&categories).Error
 	return categories, err
 }
 

@@ -3,23 +3,21 @@ package service
 import (
 	"gorm.io/gorm"
 	"lab4/models"
+	"lab4/scopes"
 )
 
 type CartService struct {
 	DB *gorm.DB
 }
 
-func (s *CartService) CreateCart(cart models.Cart) (models.Cart, error) {
-	err := s.DB.Create(&cart).Error
-	if err != nil {
-		return models.Cart{}, err
-	}
-	return cart, nil
-}
-
 func (s *CartService) GetCartByID(cartID uint) (models.Cart, error) {
 	var cart models.Cart
-	err := s.DB.Preload("CartItems.Product").First(&cart, cartID).Error
+	err := s.DB.Scopes(scopes.CartWithItemsAndProducts()).First(&cart, cartID).Error
+	return cart, err
+}
+
+func (s *CartService) CreateCart(cart models.Cart) (models.Cart, error) {
+	err := s.DB.Create(&cart).Error
 	if err != nil {
 		return models.Cart{}, err
 	}

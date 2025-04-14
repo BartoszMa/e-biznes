@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"gorm.io/gorm"
 	"lab4/models"
+	"lab4/scopes"
 )
 
 type Service struct {
@@ -21,11 +22,8 @@ func (s *Service) GetAllProducts() ([]models.Product, error) {
 
 func (s *Service) GetOneProduct(id uint) (models.Product, error) {
 	var product models.Product
-	result := s.DB.First(&product, id)
-	if result.Error != nil {
-		return models.Product{}, result.Error
-	}
-	return product, nil
+	err := s.DB.Scopes(scopes.ProductByID(id), scopes.WithCategory()).First(&product).Error
+	return product, err
 }
 
 func (s *Service) AddProduct(product models.Product) error {
