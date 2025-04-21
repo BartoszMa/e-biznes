@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Products() {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:4000/product")
-            .then((res) => res.json())
-            .then(setProducts)
+        axios
+            .get("http://localhost:4000/product", {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((res) => setProducts(res.data))
             .catch(console.error);
     }, []);
 

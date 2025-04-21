@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Payments() {
     const [price, setPrice] = useState("");
@@ -8,15 +9,16 @@ function Payments() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch("http://localhost:4000/payments", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ price: parseFloat(price), is_payed: isPayed })
-        })
-            .then((res) => res.json())
-            .then(setResponse)
+        axios
+            .post("http://localhost:4000/payments", {
+                price: parseFloat(price),
+                is_payed: isPayed
+            }, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((res) => setResponse(res.data))
             .catch(console.error);
     };
 

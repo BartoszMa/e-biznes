@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function CartView() {
     const { id } = useParams();
     const [cart, setCart] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:4000/cart/${id}`)
-            .then((res) => res.json())
-            .then(setCart)
+        axios
+            .get(`http://localhost:4000/cart/${id}`, {
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((res) => setCart(res.data))
             .catch(console.error);
     }, [id]);
 

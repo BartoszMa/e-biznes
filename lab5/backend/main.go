@@ -32,7 +32,12 @@ func main() {
 	routes.ProductRouter(productController, e)
 	routes.CartRouter(cartController, e)
 	routes.PaymentRouter(paymentController, e)
+
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"http://localhost:3000"},
+		AllowMethods: []string{echo.GET, echo.POST, echo.PUT, echo.DELETE},
+		AllowHeaders: []string{echo.HeaderOrigin, echo.HeaderContentType, echo.HeaderAccept},
+	}))
 	
-	e.Use(middleware.CORS())
 	e.Logger.Fatal(e.Start(":4000"))
 }
