@@ -1,6 +1,7 @@
 products.db
 lab4.iml
 .idea
+frontend/dist
 
 # Created by https://www.toptal.com/developers/gitignore/api/go,react,intellij
 # Edit at https://www.toptal.com/developers/gitignore?templates=go,react,intellij
@@ -44,6 +45,8 @@ go.work
 
 # Generated files
 .idea/**/contentModel.xml
+
+.dist
 
 # Sensitive or high-churn files
 .idea/**/dataSources/
