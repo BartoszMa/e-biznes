@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"errors"
 	"github.com/labstack/echo/v4"
+	"gorm.io/gorm"
 	"lab4/models"
 	"lab4/service"
 	"net/http"
@@ -34,7 +36,10 @@ func (cc *CartController) GetCartByID(c echo.Context) error {
 
 	cart, err := cc.CartService.GetCartByID(uint(id))
 	if err != nil {
-		return c.JSON(http.StatusNotFound, map[string]string{"error": "Cart not found"})
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return c.JSON(http.StatusNotFound, map[string]string{"error": "Cart not found"})
+		}
+		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
 
 	return c.JSON(http.StatusOK, cart)
@@ -48,6 +53,9 @@ func (cc *CartController) DeleteCart(c echo.Context) error {
 
 	err = cc.CartService.DeleteCartByID(uint(id))
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return c.JSON(http.StatusNotFound, map[string]string{"error": "Cart not found"})
+		}
 		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
 
@@ -63,6 +71,9 @@ func (cc *CartController) AddProductToCart(c echo.Context) error {
 
 	err := cc.CartService.AddProductToCart(uint(cartID), uint(productID))
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return c.JSON(http.StatusNotFound, map[string]string{"error": "Cart or product not found"})
+		}
 		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
 
@@ -78,6 +89,9 @@ func (cc *CartController) RemoveProductFromCart(c echo.Context) error {
 
 	err := cc.CartService.RemoveProductFromCart(uint(cartID), uint(productID))
 	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return c.JSON(http.StatusNotFound, map[string]string{"error": "Product not found in cart"})
+		}
 		return c.JSON(http.StatusInternalServerError, map[string]string{"error": err.Error()})
 	}
 
