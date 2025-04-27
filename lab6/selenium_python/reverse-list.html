@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Reverse List</title></head>
+<body>
+<input id="list" type="text" placeholder="Enter list (comma separated)">
+<button onclick="reverseList()">Reverse List</button>
+<p id="reverse-list-result"></p>
+
+<script>
+    async function reverseList() {
+        let list = document.getElementById("list").value.split(",");
+        let response = await fetch('http://127.0.0.1:8000/reverse-list', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(list)
+        });
+        let data = await response.json();
+        document.getElementById("reverse-list-result").innerText = data.reversed.join(", ");
+    }
+</script>
+</body>
+</html>

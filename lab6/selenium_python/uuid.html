@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate UUID</title>
+    <script>
+        function generateUUID() {
+            const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                const r = Math.random() * 16 | 0;
+                const v = c === 'x' ? r : (r & 0x3 | 0x8);
+                return v.toString(16);
+            });
+            document.getElementById("uuid-result").innerText = uuid;
+        }
+    </script>
+</head>
+<body>
+<h1>Generate UUID</h1>
+<button onclick="generateUUID()">Generate UUID</button>
+<div id="uuid-result"></div>
+</body>
+</html>

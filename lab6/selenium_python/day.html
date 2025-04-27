@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Day of Week</title></head>
+<body>
+<input id="n" type="number" placeholder="Enter number (0-6)">
+<button onclick="getDay()">Get Day</button>
+<p id="day-result"></p>
+
+<script>
+    async function getDay() {
+        let n = document.getElementById("n").value;
+        let response = await fetch(`http://127.0.0.1:8000/day/${n}`);
+        let data = await response.json();
+        if (data.error) {
+            document.getElementById("day-result").innerText = data.error;
+        } else {
+            document.getElementById("day-result").innerText = data.day;
+        }
+    }
+</script>
+</body>
+</html>

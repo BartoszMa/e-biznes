@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Palindrome Checker</title></head>
+<body>
+<input id="word" type="text" placeholder="Enter word">
+<button onclick="checkPalindrome()">Check Palindrome</button>
+<p id="palindrome-result"></p>
+
+<script>
+    async function checkPalindrome() {
+        let word = document.getElementById("word").value;
+        let response = await fetch(`http://127.0.0.1:8000/palindrome/${word}`);
+        let data = await response.json();
+        document.getElementById("palindrome-result").innerText = data.palindrome;
+    }
+</script>
+</body>
+</html>

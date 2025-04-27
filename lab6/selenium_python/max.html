@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Find Max</title></head>
+<body>
+<input id="numbers" type="text" placeholder="Enter numbers (comma separated)">
+<button onclick="findMax()">Find Max</button>
+<p id="max-result"></p>
+
+<script>
+    async function findMax() {
+        let numbers = document.getElementById("numbers").value.split(",").map(Number);
+        let response = await fetch('http://127.0.0.1:8000/max', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(numbers)
+        });
+        let data = await response.json();
+        document.getElementById("max-result").innerText = data.max;
+    }
+</script>
+</body>
+</html>

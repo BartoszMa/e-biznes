@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Number</title>
+  <script>
+    function generateRandom() {
+      const randomNumber = Math.floor(Math.random() * 101);
+      document.getElementById("random-result").innerText = randomNumber;
+    }
+  </script>
+</head>
+<body>
+<h1>Generate Random Number (0-100)</h1>
+<button onclick="generateRandom()">Generate</button>
+<div id="random-result"></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+<h1>Login Form</h1>
+
+<form id="login-form" action="http://127.0.0.1:8000/login" method="post">
+    <label for="username">Username:</label><br>
+    <input type="text" id="username" name="username"><br><br>
+
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password"><br><br>
+
+    <input type="submit" id="login-button" value="Login">
+</form>
+
+<div id="response"></div>
+
+<script>
+    const form = document.getElementById('login-form');
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+        const params = new URLSearchParams(formData);
+
+        const response = await fetch(form.action + "?" + params.toString(), {
+            method: "POST"
+        });
+        const data = await response.json();
+
+        document.getElementById('response').innerText = JSON.stringify(data);
+    });
+</script>
+</body>
+</html>

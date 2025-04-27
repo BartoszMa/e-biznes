@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Multiply</title></head>
+<body>
+<input id="a" type="number" placeholder="First number">
+<input id="b" type="number" placeholder="Second number">
+<button onclick="multiply()">Multiply</button>
+<p id="multiply-result"></p>
+
+<script>
+  async function multiply() {
+    let a = document.getElementById("a").value;
+    let b = document.getElementById("b").value;
+    let response = await fetch(`http://127.0.0.1:8000/multiply/${a}/${b}`);
+    let data = await response.json();
+    document.getElementById("multiply-result").innerText = data.result;
+  }
+</script>
+</body>
+</html>

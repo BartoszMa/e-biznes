@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Even Checker</title></head>
+<body>
+<input id="number" type="number" placeholder="Enter number">
+<button onclick="checkEven()">Check Even</button>
+<p id="even-result"></p>
+
+<script>
+    async function checkEven() {
+        let number = document.getElementById("number").value;
+        let response = await fetch(`http://127.0.0.1:8000/even/${number}`);
+        let data = await response.json();
+        document.getElementById("even-result").innerText = data.even;
+    }
+</script>
+</body>
+</html>

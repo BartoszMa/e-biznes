@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Range</title></head>
+<body>
+<input id="n" type="number" placeholder="Enter number">
+<button onclick="generateRange()">Generate Range</button>
+<p id="range-result"></p>
+
+<script>
+    async function generateRange() {
+        let n = document.getElementById("n").value;
+        let response = await fetch(`http://127.0.0.1:8000/range/${n}`);
+        let data = await response.json();
+        document.getElementById("range-result").innerText = data.range.join(", ");
+    }
+</script>
+</body>
+</html>

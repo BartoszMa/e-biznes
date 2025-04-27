@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sum Two Numbers</title>
+    <script>
+        function sumNumbers() {
+            let a = parseInt(document.getElementById("a").value);
+            let b = parseInt(document.getElementById("b").value);
+            let result = a + b;
+            document.getElementById("sum-result").innerText = result;
+        }
+    </script>
+</head>
+<body>
+<h1>Sum Numbers</h1>
+<input id="a" type="number" placeholder="First number">
+<input id="b" type="number" placeholder="Second number">
+<button onclick="sumNumbers()">Sum</button>
+<div id="sum-result"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Find Min</title></head>
+<body>
+<input id="numbers" type="text" placeholder="Enter numbers (comma separated)">
+<button onclick="findMin()">Find Min</button>
+<p id="min-result"></p>
+
+<script>
+    async function findMin() {
+        let numbers = document.getElementById("numbers").value.split(",").map(Number);
+        let response = await fetch('http://127.0.0.1:8000/min', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(numbers)
+        });
+        let data = await response.json();
+        document.getElementById("min-result").innerText = data.min;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Uppercase</title></head>
+<body>
+<input id="text" type="text" placeholder="Enter text">
+<button onclick="makeUppercase()">Uppercase</button>
+<p id="uppercase-result"></p>
+
+<script>
+    async function makeUppercase() {
+        let text = document.getElementById("text").value;
+        let response = await fetch(`http://127.0.0.1:8000/uppercase/${text}`);
+        let data = await response.json();
+        document.getElementById("uppercase-result").innerText = data.result;
+    }
+</script>
+</body>
+</html>

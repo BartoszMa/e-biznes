@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head><title>Reverse</title></head>
+<body>
+<input id="text" type="text">
+<button onclick="reverse()">Reverse</button>
+<p id="reverse-result"></p>
+
+<script>
+    async function reverse() {
+        const text = document.getElementById("text").value;
+        const response = await fetch('http://127.0.0.1:8000/reverse/' + text);
+
+        let data = await response.json();
+        document.getElementById("reverse-result").innerText = data.result;
+    }
+</script>
+</body>
+</html>

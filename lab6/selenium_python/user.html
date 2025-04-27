@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>User</title></head>
+<body>
+<input id="user_id" type="number" value="1">
+<button onclick="getUser()">Get User</button>
+<p id="user-result"></p>
+
+<script>
+  async function getUser() {
+    let userId = document.getElementById("user_id").value;
+    let response = await fetch(`http://127.0.0.1:8000/user/${userId}`);
+    let data = await response.json();
+    document.getElementById("user-result").innerText = JSON.stringify(data);
+  }
+</script>
+</body>
+</html>

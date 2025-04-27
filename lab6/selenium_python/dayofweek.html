@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day of the Week (API)</title>
+    <script>
+        async function getDayOfWeek() {
+            let n = document.getElementById("number").value;
+            try {
+                const response = await fetch(`http://localhost:8000/day/${n}`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                document.getElementById("dayofweek-result").innerText = data.day;
+            } catch (error) {
+                document.getElementById("dayofweek-result").innerText = "Error fetching day";
+                console.error('Fetch error:', error);
+            }
+        }
+    </script>
+</head>
+<body>
+<h1>Day of the Week (via API)</h1>
+<input id="number" type="number" placeholder="Enter number (0-6)">
+<button onclick="getDayOfWeek()">Get Day</button>
+<div id="dayofweek-result"></div>
+</body>
+</html>

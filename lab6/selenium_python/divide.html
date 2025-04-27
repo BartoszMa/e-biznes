@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Divide</title></head>
+<body>
+<input id="a" type="number" placeholder="Dividend">
+<input id="b" type="number" placeholder="Divisor">
+<button onclick="divide()">Divide</button>
+<p id="divide-result"></p>
+
+<script>
+    async function divide() {
+        let a = document.getElementById("a").value;
+        let b = document.getElementById("b").value;
+        let response = await fetch(`http://127.0.0.1:8000/divide/${a}/${b}`);
+        let data = await response.json();
+        if (data.error) {
+            document.getElementById("divide-result").innerText = data.error;
+        } else {
+            document.getElementById("divide-result").innerText = data.result;
+        }
+    }
+</script>
+</body>
+</html>

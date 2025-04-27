@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Current Time</title>
+  <script>
+    function showCurrentTime() {
+      const now = new Date();
+      const timeString = now.getHours().toString().padStart(2, '0') + ":" +
+              now.getMinutes().toString().padStart(2, '0') + ":" +
+              now.getSeconds().toString().padStart(2, '0');
+      document.getElementById("nowtime-result").innerText = timeString;
+    }
+  </script>
+</head>
+<body>
+<h1>Show Current Time</h1>
+<button onclick="showCurrentTime()">Get Current Time</button>
+<div id="nowtime-result"></div>
+</body>
+</html>

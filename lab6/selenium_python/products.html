@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<h1>Products</h1>
+<button onclick="fetchProducts()">Load Products</button>
+<ul id="products-list"></ul>
+
+<script>
+    async function fetchProducts() {
+        const response = await fetch('http://127.0.0.1:8000/products');
+        const data = await response.json();
+        const list = document.getElementById('products-list');
+        list.innerHTML = "";
+        data.products.forEach(product => {
+            const li = document.createElement('li');
+            li.textContent = product;
+            list.appendChild(li);
+        });
+    }
+</script>
+</body>
+</html>

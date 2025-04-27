@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Repeat</title></head>
+<body>
+<input id="word" type="text" placeholder="Word">
+<input id="times" type="number" placeholder="Times">
+<button onclick="repeatWord()">Repeat</button>
+<p id="repeat-result"></p>
+
+<script>
+    async function repeatWord() {
+        let word = document.getElementById("word").value;
+        let times = document.getElementById("times").value;
+        let response = await fetch(`http://127.0.0.1:8000/repeat/${word}/${times}`);
+        let data = await response.json();
+        document.getElementById("repeat-result").innerText = data.result;
+    }
+</script>
+</body>
+</html>

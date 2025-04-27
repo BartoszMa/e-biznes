@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Length</title></head>
+<body>
+<input id="text" type="text" placeholder="Enter text">
+<button onclick="getLength()">Get Length</button>
+<p id="length-result"></p>
+
+<script>
+  async function getLength() {
+    let text = document.getElementById("text").value;
+    let response = await fetch(`http://127.0.0.1:8000/length/${text}`);
+    let data = await response.json();
+    document.getElementById("length-result").innerText = data.length;
+  }
+</script>
+</body>
+</html>

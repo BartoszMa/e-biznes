@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Greet User</title></head>
+<body>
+<input id="name" type="text" placeholder="Enter name">
+<input id="role" type="text" placeholder="Enter role">
+<button onclick="greetUser()">Greet</button>
+<p id="greet-result"></p>
+
+<script>
+    async function greetUser() {
+        let name = document.getElementById("name").value;
+        let role = document.getElementById("role").value;
+        let response = await fetch(`http://127.0.0.1:8000/greet/${name}/${role}`);
+        let data = await response.json();
+        document.getElementById("greet-result").innerText = data.message;
+    }
+</script>
+</body>
+</html>

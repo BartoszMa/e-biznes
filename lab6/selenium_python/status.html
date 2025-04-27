@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Status</title></head>
+<body>
+<button onclick="checkStatus()">Check Status</button>
+<p id="status-result"></p>
+
+<script>
+  async function checkStatus() {
+    let response = await fetch("http://127.0.0.1:8000/status");
+    let data = await response.json();
+    document.getElementById("status-result").innerText = data.status;
+  }
+</script>
+</body>
+</html>

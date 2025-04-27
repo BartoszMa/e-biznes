@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Lowercase</title></head>
+<body>
+<input id="text" type="text" placeholder="Enter text">
+<button onclick="makeLowercase()">Lowercase</button>
+<p id="lowercase-result"></p>
+
+<script>
+  async function makeLowercase() {
+    let text = document.getElementById("text").value;
+    let response = await fetch(`http://127.0.0.1:8000/lowercase/${text}`);
+    let data = await response.json();
+    document.getElementById("lowercase-result").innerText = data.result;
+  }
+</script>
+</body>
+</html>

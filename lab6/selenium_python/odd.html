@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Odd Check</title>
+    <script>
+        function checkOdd() {
+            const number = parseInt(document.getElementById("number").value);
+            const isOdd = number % 2 !== 0;
+            document.getElementById("odd-result").innerText = isOdd;
+        }
+    </script>
+</head>
+<body>
+<h1>Odd Checker</h1>
+<input id="number" type="number" placeholder="Enter a number">
+<button onclick="checkOdd()">Check</button>
+<div id="odd-result"></div>
+</body>
+</html>

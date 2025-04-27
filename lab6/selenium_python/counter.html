@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Counter</title></head>
+<body>
+<input id="number" type="number" value="0">
+<button onclick="count()">Count</button>
+<p id="counter-result"></p>
+
+<script>
+    async function count() {
+        let num = document.getElementById("number").value;
+        let response = await fetch(`http://127.0.0.1:8000/counter/${num}`);
+        let data = await response.json();
+        document.getElementById("counter-result").innerText = data.result;
+    }
+</script>
+</body>
+</html>

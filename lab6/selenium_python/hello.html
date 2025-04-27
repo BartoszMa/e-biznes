@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Page</title>
+</head>
+<body>
+<h1>Hello Page</h1>
+<input type="text" id="name" placeholder="Enter your name">
+<button onclick="fetchHello()">Say Hello</button>
+<div id="hello-message"></div>
+
+<script>
+    async function fetchHello() {
+        const name = document.getElementById('name').value;
+        const response = await fetch(`http://127.0.0.1:8000/hello/${name}`);
+        const data = await response.json();
+        document.getElementById('hello-message').innerText = data.message;
+    }
+</script>
+</body>
+</html>
