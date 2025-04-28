@@ -61,7 +61,7 @@ Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab4)
 
 Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab5)
 
-**Zadanie 5** Frontend
+**Zadanie 6** Testy
 
 :white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/BartoszMa/e-biznes/commit/d52a6dcda17b63ac24dd0a42e5449ac5a8075060)
 
