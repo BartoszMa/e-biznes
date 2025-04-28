@@ -60,3 +60,17 @@ Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab4)
 :white_check_mark: 5 wymaganie 5 [Link do commita 3](https://github.com/BartoszMa/e-biznes/commit/fadacbbd98647be95b9acacbd37836ba4fb0ce00)
 
 Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab5)
+
+**Zadanie 5** Frontend
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/BartoszMa/e-biznes/commit/d52a6dcda17b63ac24dd0a42e5449ac5a8075060)
+
+:white_check_mark: 3.5 wymaganie 2 [Link do commita2 ](https://github.com/BartoszMa/e-biznes/commit/d52a6dcda17b63ac24dd0a42e5449ac5a8075060)
+
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/BartoszMa/e-biznes/commit/0875dea10f44bf318062fedf95271557b1f025ce)
+
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 3](https://github.com/BartoszMa/e-biznes/commit/2510b27678187aa39f577d4ca5983c4d355acb30)
+
+:white_check_mark: 5 wymaganie 5 [Link do commita 3](https://github.com/BartoszMa/e-biznes/commit/c03dac7a5f5035bcc04efe8ce4347f550b8f241c)
+
+Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab6)
