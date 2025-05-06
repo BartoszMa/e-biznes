@@ -74,3 +74,14 @@ Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab5)
 :white_check_mark: 5 wymaganie 5 [Link do commita 5](https://github.com/BartoszMa/e-biznes/commit/c03dac7a5f5035bcc04efe8ce4347f550b8f241c)
 
 Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab6)
+
+**Zadanie 7** Sonar
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/BartoszMa/e_biznes_lab7/commit/98e353d85d1cc0da1ca60fbcd9bdf181162bb546)
+
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/BartoszMa/e_biznes_lab7/commit/f2065e18f3fc41df0312fd721b93fa120469d4bd)
+
+:white_check_mark: 5 wymaganie 5 [Link do commita 5](https://github.com/BartoszMa/po_lab6/commit/404506ec6eb02d4f7b0f210aebce1efd02092ba6)
+
+Kod: [Folder_backend](https://github.com/BartoszMa/e_biznes_lab7)
+Kod: [Folder_front](https://github.com/BartoszMa/po_lab6)
