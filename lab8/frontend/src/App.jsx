@@ -2,6 +2,7 @@ import './App.css'
 import LoginForm from "./components/LoginForm.jsx";
 import { useState } from "react";
 import ProtectedContent from "./components/ProtectedContent.jsx";
+import RegisterForm from "./components/RegisterForm.jsx";
 
 function App() {
     const [showLogin, setShowLogin] = useState(false);
@@ -20,6 +21,9 @@ function App() {
             </div>
             <div className="card">
                 <ProtectedContent />
+            </div>
+            <div className="card">
+                <RegisterForm/>
             </div>
         </>
     );
