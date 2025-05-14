@@ -34,8 +34,8 @@ users_db = {
     }
 }
 
-oauth = OAuth()
-oauth.register(
+oauth_google = OAuth()
+oauth_google.register(
     name='google',
     client_id="",
     client_secret="",
@@ -43,6 +43,17 @@ oauth.register(
     client_kwargs={
         'scope': 'openid email profile'
     }
+)
+
+oauth_github = OAuth()
+oauth_github.register(
+    name='github',
+    client_id="",
+    client_secret="",
+    access_token_url='https://github.com/login/oauth/access_token',
+    authorize_url='https://github.com/login/oauth/authorize',
+    api_base_url='https://api.github.com/',
+    client_kwargs={'scope': 'user:email'},
 )
 
 @app.post("/token")
@@ -92,12 +103,24 @@ def register(data: RegisterRequest):
 async def login_via_google(request: Request):
     redirect_uri = "http://localhost:8000/auth/google/callback"
 
-    return await oauth.google.authorize_redirect(request, redirect_uri)
+    return await oauth_google.google.authorize_redirect(request, redirect_uri)
 
 @app.get("/auth/google/callback")
 async def auth_google_callback(request: Request):
-    token = await oauth.google.authorize_access_token(request)
+    token = await oauth_google.google.authorize_access_token(request)
 
     user = dict(token)["userinfo"]
 
     return {"email": user.get("email"), "name": user.get("name")}
+
+@app.get("/auth/github")
+async def login_via_github(request: Request):
+    redirect_uri = request.url_for('auth_github_callback')
+    return await oauth_github.github.authorize_redirect(request, redirect_uri)
+
+@app.get("/auth/github/callback")
+async def auth_github_callback(request: Request):
+    token = await oauth_github.github.authorize_access_token(request)
+    user_resp = await oauth_github.github.get('user', token=token)
+    user = user_resp.json()
+    return {"name": user.get("name")}
