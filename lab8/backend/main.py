@@ -108,10 +108,19 @@ async def login_via_google(request: Request):
 @app.get("/auth/google/callback")
 async def auth_google_callback(request: Request):
     token = await oauth_google.google.authorize_access_token(request)
+    userinfo = await oauth_google.google.parse_id_token(request, token)
 
-    user = dict(token)["userinfo"]
+    username = userinfo.get("email")
+    name = userinfo.get("name")
 
-    return {"email": user.get("email"), "name": user.get("name")}
+    if username not in users_db:
+        users_db[username] = {
+            "username": username,
+            "name": name,
+            "oauth_provider": "google"
+        }
+
+    return {"email": username, "name": name}
 
 @app.get("/auth/github")
 async def login_via_github(request: Request):
@@ -123,4 +132,15 @@ async def auth_github_callback(request: Request):
     token = await oauth_github.github.authorize_access_token(request)
     user_resp = await oauth_github.github.get('user', token=token)
     user = user_resp.json()
-    return {"name": user.get("name")}
+
+    username = user.get("login")
+    name = user.get("name") or username
+
+    if username not in users_db:
+        users_db[username] = {
+            "username": username,
+            "name": name,
+            "oauth_provider": "github"
+        }
+
+    return {"username": username, "name": name}
