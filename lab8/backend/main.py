@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Request
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from passlib.context import CryptContext
 import jwt
@@ -6,6 +6,8 @@ from datetime import datetime, timedelta
 
 from pydantic import BaseModel
 from starlette.middleware.cors import CORSMiddleware
+from authlib.integrations.starlette_client import OAuth
+from starlette.middleware.sessions import SessionMiddleware
 
 app = FastAPI()
 
@@ -16,6 +18,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.add_middleware(SessionMiddleware, secret_key="test")
 
 SECRET_KEY = "your-secret-key"
 ALGORITHM = "HS256"
@@ -29,6 +33,17 @@ users_db = {
         "hashed_password": pwd_context.hash("testpassword")
     }
 }
+
+oauth = OAuth()
+oauth.register(
+    name='google',
+    client_id="",
+    client_secret="",
+    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
+    client_kwargs={
+        'scope': 'openid email profile'
+    }
+)
 
 @app.post("/token")
 def login(form_data: OAuth2PasswordRequestForm = Depends()):
@@ -72,3 +87,17 @@ def register(data: RegisterRequest):
         "hashed_password": hashed_password,
     }
     return {"message": "User registered successfully"}
+
+@app.get("/auth/google")
+async def login_via_google(request: Request):
+    redirect_uri = "http://localhost:8000/auth/google/callback"
+
+    return await oauth.google.authorize_redirect(request, redirect_uri)
+
+@app.get("/auth/google/callback")
+async def auth_google_callback(request: Request):
+    token = await oauth.google.authorize_access_token(request)
+
+    user = dict(token)["userinfo"]
+
+    return {"email": user.get("email"), "name": user.get("name")}
