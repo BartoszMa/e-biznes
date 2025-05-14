@@ -85,3 +85,17 @@ Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab6)
 
 Kod: [Folder_backend](https://github.com/BartoszMa/e_biznes_lab7)
 Kod: [Folder_front](https://github.com/BartoszMa/po_lab6)
+
+**Zadanie 8** OAuth2
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/BartoszMa/e-biznes/commit/03b4256ffe0532ee81a6bf5944d037de586ac200)
+
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/BartoszMa/e-biznes/commit/bbd934ba276bc865b75418e0ac9608feeaecd8d5)
+
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/BartoszMa/e-biznes/commit/04782fe70125b5ff83578843b1844bb9a86d9230)
+
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/BartoszMa/e-biznes/commit/8bad022cbd5dbe47a93243eecb90d9e84a2133c3)
+
+:white_check_mark: 5 wymaganie 5 [Link do commita 5](https://github.com/BartoszMa/e-biznes/commit/5dad964de6b9e059960eb0b3505edaa9f298ff0d)
+
+Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab8)
