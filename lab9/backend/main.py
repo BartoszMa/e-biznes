@@ -44,6 +44,28 @@ def chat_with_ollama(request: ChatRequest):
             greeting = {"role": "system", "content": random.choice(openings)}
             user_messages.insert(0, greeting)
 
+
+        keywords = [
+            "clothes", "clothing", "shirt", "pants", "dress", "shoes", "store",
+            "delivery", "shipping", "payment", "return", "refund", "order", "size"
+        ]
+
+
+        last_user_message = next((m["content"] for m in reversed(user_messages) if m["role"] == "user"), "")
+
+        if not any(kw in last_user_message.lower() for kw in keywords):
+            return {
+                "message": {
+                    "role": "assistant",
+                    "content": "I'm sorry, but I can only respond to questions related to shopping, clothing, or store-related topics. Please ask something within that scope."
+                }
+            }
+
+        user_messages.insert(0, {
+            "role": "system",
+            "content": "Only respond to questions related to shopping, clothing, product sizes, shipping, payment, or returns. Politely refuse to answer unrelated topics."
+        })
+
         payload = {
             "model": "tinyllama",
             "messages": user_messages,
