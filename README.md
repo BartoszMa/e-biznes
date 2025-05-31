@@ -99,3 +99,17 @@ Kod: [Folder_front](https://github.com/BartoszMa/po_lab6)
 :white_check_mark: 5 wymaganie 5 [Link do commita 5](https://github.com/BartoszMa/e-biznes/commit/5dad964de6b9e059960eb0b3505edaa9f298ff0d)
 
 Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab8)
+
+**Zadanie 9** ChatGPT bot
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/BartoszMa/e-biznes/commit/00faeda22f256de71437e2e965d799f2357ce0a0)
+
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/BartoszMa/e-biznes/commit/7e573930a88847312a7545fd5a94b69304ffc296)
+
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/BartoszMa/e-biznes/commit/e78057e46d1c90bd31c7095ae606cfb1dfa0e556)
+
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/BartoszMa/e-biznes/commit/e28f1e4eeee9cb9d9add74c3b0d3ab2b0291be55)
+
+:white_check_mark: 5 wymaganie 5 [Link do commita 5](https://github.com/BartoszMa/e-biznes/commit/134459cc518d12d3e7952466bf6df04e1578b090)
+
+Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab9)
