@@ -3,6 +3,7 @@ import random
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import requests
+from textblob import TextBlob
 from starlette.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -50,7 +51,6 @@ def chat_with_ollama(request: ChatRequest):
             "delivery", "shipping", "payment", "return", "refund", "order", "size"
         ]
 
-
         last_user_message = next((m["content"] for m in reversed(user_messages) if m["role"] == "user"), "")
 
         if not any(kw in last_user_message.lower() for kw in keywords):
@@ -80,7 +80,19 @@ def chat_with_ollama(request: ChatRequest):
         response_json = response.json()
 
         if "message" in response_json:
-            response_json["message"]["content"] += "\n\n" + random.choice(closings)
+            ai_response = response_json["message"]["content"]
+
+            sentiment_score = TextBlob(ai_response).sentiment.polarity
+
+            if sentiment_score < 0.2:
+                return {
+                    "message": {
+                        "role": "assistant",
+                        "content": "I'm here to help, but I want to keep things positive! Could you rephrase your question or ask something else related to shopping or clothing?"
+                    }
+                }
+
+            response_json["message"]["content"] = ai_response + "\n\n" + random.choice(closings)
 
         return response_json
 
