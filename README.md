@@ -113,3 +113,17 @@ Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab8)
 :white_check_mark: 5 wymaganie 5 [Link do commita 5](https://github.com/BartoszMa/e-biznes/commit/134459cc518d12d3e7952466bf6df04e1578b090)
 
 Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab9)
+
+**Zadanie 10** Chmura/CI
+
+:white_check_mark: 3.0 wymaganie 1 [Link do commita 1](https://github.com/BartoszMa/e-biznes-10/commit/944138e32d0b090438978f6f0f895d9d222e7adb)
+
+:white_check_mark: 3.5 wymaganie 2 [Link do commita 2](https://github.com/BartoszMa/e-biznes-10/commit/944138e32d0b090438978f6f0f895d9d222e7adb)
+
+:white_check_mark: 4.0 wymaganie 3 [Link do commita 3](https://github.com/BartoszMa/e-biznes-10/commit/d3d1d760730ef22e7808ad05f1f708e8c1c2804c)
+
+:white_check_mark: 4.5 wymaganie 4 [Link do commita 4](https://github.com/BartoszMa/e-biznes-10/commit/944138e32d0b090438978f6f0f895d9d222e7adb)
+
+:x: 5.0 wymaganie 5
+
+Kod: [Folder](https://github.com/BartoszMa/e-biznes-10)
