@@ -2,7 +2,7 @@
 
 :white_check_mark: 5.0 wymaganie 5 [Link do commita 1](https://github.com/BartoszMa/e-biznes/commit/65f0e3f331355282315edad777070e7a0e3f8267#diff-1b5f0e48b08706e55870c081c508d20a3064c1dbf29cfcd114bb61bff13b6f29)
 
-Obraz: [DockerHub](https://hub.docker.com/repository/docker/bartoszmajkowski/e_biznes/general)
+Obraz: [DockerHub](https://hub.docker.com/r/bartoszmajkowski/e_biznes)
 Kod: [Folder](https://github.com/BartoszMa/e-biznes/tree/main/lab1)
 
 **Zadanie 2** Scala
